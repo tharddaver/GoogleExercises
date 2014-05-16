@@ -42,13 +42,13 @@ def extract_names(filename):
     ['2006', 'Aaliyah 91', Aaron 57', 'Abagail 895', ' ...]
     """
 
-    file_ = open(filename)
-    text = file_.read()
+    input_file = open(filename)
+    text = input_file.read()
 
-    list_ = []
+    names_list = []
     match = re.search(r'<h[23]{1}.*?>[\w\s]*(\d{4})</h[23]{1}>', text)
     if match:
-        list_.append(match.group(1))
+        names_list.append(match.group(1))
 
     names = {}
     matches = re.findall(r'<td>(\d+)</td><td>(\w+?)</td><td>(\w+?)</td>', text)
@@ -60,9 +60,9 @@ def extract_names(filename):
             names[match[2]] = match[0]
 
     for name in sorted(names.keys()):
-        list_.append(name + ' ' + names[name])
+        names_list.append(name + ' ' + names[name])
 
-    return list_
+    return names_list
 
 
 def main():

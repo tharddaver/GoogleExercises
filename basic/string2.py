@@ -8,7 +8,6 @@
 
 # Additional basic string exercises
 
-import math
 
 # D. verbing
 # Given a string, if its length is at least 3,
@@ -19,10 +18,7 @@ import math
 # Return the resulting string.
 def verbing(s):
     if len(s) >= 3:
-        if s.endswith('ing'):
-            s += 'ly'
-        else:
-            s += 'ing'
+        s += 'ly' if s.endswith('ing') else 'ing'
 
     return s
 

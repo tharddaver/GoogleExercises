@@ -41,38 +41,28 @@ import sys
 
 
 def get_words_from_file(filename):
-    file_ = open(filename, 'r')
+    input_file = open(filename, 'r')
 
-    text = file_.read().lower()
+    text = input_file.read().lower()
     words = text.split()
     words_dict = dict.fromkeys(words)
-    words_count = []
 
     for word in words_dict:
-        words_count.append((word, words.count(word)))
+        words_dict[word] = words.count(word)
 
-    return words_count
-
-
-def sorting_by_words(tuple_):
-    return tuple_[0]
-
-
-def sorting_by_count(tuple_):
-    return tuple_[1]
+    return words_dict
 
 
 def print_words(filename):
     words = get_words_from_file(filename)
 
-    print sorted(words, key=sorting_by_words)
+    print sorted(words)
 
 
 def print_top(filename):
     words = get_words_from_file(filename)
-    words = sorted(words, key=sorting_by_count, reverse=True)
 
-    print words[0:20]
+    print sorted(words, key=words.get, reverse=True)[0:20]
 
 
 # Define print_words(filename) and print_top(filename) functions.

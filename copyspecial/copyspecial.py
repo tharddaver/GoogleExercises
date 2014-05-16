@@ -41,8 +41,6 @@ def copy_to(paths, todir):
     for path in paths:
         shutil.copy(os.path.basename(path), todir)
 
-    return
-
 
 def zip_to(paths, zipfile):
     if not paths:
@@ -54,8 +52,6 @@ def zip_to(paths, zipfile):
     if status:
         sys.stderr.write(output)
         sys.exit(1)
-
-    return
 
 
 def main():

@@ -47,14 +47,14 @@ def read_urls(filename):
     urls = []
 
     pattern = r'GET\s+([\S]*puzzle[\S]*)\s+HTTP'
-    file_ = open(filename)
-    for line in file_:
+    input_file = open(filename)
+    for line in input_file:
         matches = re.search(pattern, line)
         if matches:
             image_url = 'http://' + host + matches.group(1)
             if image_url not in urls:
                 urls.append('http://' + host + matches.group(1))
-    file_.close()
+    input_file.close()
 
     return sorted(urls, key=sorting_function)
 
@@ -90,8 +90,6 @@ def download_images(img_urls, dest_dir):
     html_file = open(os.path.join(dest_dir, 'index.html'), 'w')
     html_file.write(html)
     html_file.close()
-
-    return
 
 
 def main():

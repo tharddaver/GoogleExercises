@@ -8,6 +8,7 @@
 
 # Additional basic list exercises
 
+
 # D. Given a list of numbers, return a list where
 # all adjacent == elements have been reduced to a single element,
 # so [1, 2, 2, 3] returns [1, 2, 3]. You may create a new list or
@@ -17,8 +18,9 @@ def remove_adjacent(nums):
         return []
 
     for num in nums:
-        if nums.count(num) > 1:
+        while nums.count(num) > 1:
             nums.remove(num)
+
     return nums
 
 
@@ -77,6 +79,7 @@ def main():
     print 'remove_adjacent'
     test(remove_adjacent([1, 2, 2, 3]), [1, 2, 3])
     test(remove_adjacent([2, 2, 3, 3, 3]), [2, 3])
+    test(remove_adjacent([2, 2, 2, 2]), [2])
     test(remove_adjacent([]), [])
 
     print
